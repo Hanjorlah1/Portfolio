@@ -118,7 +118,7 @@
         margin-bottom: 10px;
         line-height: 1.15;
       }
-      .hero-title > span {
+      .styled-name {
         background: linear-gradient(90deg, #8b5cf6, #3b82f6);
 
         -webkit-background-clip: text;
@@ -137,17 +137,11 @@
         max-width: 600px;
         font-size: clamp(14px, 3vw, 16px);
       }
-      .hero-btn {
+      .hero-btn-container {
         display: flex;
         flex-wrap: wrap;
         gap: 15px;
         margin-bottom: 60px;
-      }
-      .hero-btn > button {
-        height: 50px;
-        width: 130px;
-        border-radius: 33px;
-        flex-shrink: 0;
       }
       .stats {
         display: flex;
@@ -168,13 +162,35 @@
       .stat-label {
         font-size: clamp(12px, 3vw, 15px);
       }
-      .cta-btn {
+      .btn {
         height: 50px;
-        width: 130px;
+        width: auto;
         border-radius: 33px;
+        background-color: #ffffff;
+        font-weight: 600;
+        font-size: 14px;
+        text-align: center;
+      }
+      .cta-btn {
         background: linear-gradient(90deg, #8b5cf6, #3b82f6);
         border: 1px solid;
         flex-shrink: 1;
+      }
+      .hero-btn {
+        width: 135px;
+        flex-shrink: 0;
+        padding: 12px 13px;
+        font-size: 15px;
+      }
+      .hero-btn-2 {
+        padding: 12px 20px;
+      }
+      .contact-btn {
+        width: 100px;
+      }
+      .contact-btn-container {
+        display: flex;
+        gap: 20px;
       }
 
       /* Structural changes that genuinely need a breakpoint check —
@@ -287,6 +303,46 @@
       .contact-card > p {
         text-align: center;
       }
+      .Gmail-tag {
+        font-size: 30px;
+        font-weight: 600;
+      }
+      .styled-intro {
+        color: #0d6efd;
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        margin-top: 30px;
+      }
+      .about-description {
+        text-align: center;
+        max-width: 440px;
+        font-size: 16px;
+        color: #888888;
+        font-weight: 400;
+      }
+      .section-heading {
+        font-size: clamp(32px, 5vw, 52px);
+        font-weight: 800;
+        color: #ffffff;
+        margin-top: 0;
+      }
+      .about-info-card {
+        background-color: #161616;
+        border-radius: 25px;
+        font-size: 17px;
+        color: #cccccc;
+        border: 1px solid #88888832;
+      }
+      .text-styled-purple {
+        color: #7c3aed;
+      }
+      .text-styled-blue {
+        color: #06b6d4;
+      }
+      .text-styled-red {
+        color: #ec4899;
+      }
     </style>
   </head>
   <body>
@@ -318,7 +374,7 @@
             </div>
             <h1 class="hero-title">
               David <br />
-              <span class="Oyaniran"> Oyaniran</span>
+              <span class="styled-name"> Oyaniran</span>
             </h1>
 
             <p class="subhead">
@@ -332,9 +388,11 @@
               auditor - One line of code at a time.
             </p>
 
-            <div class="hero-btn btn">
-              <a href=""><button class="cta-btn">View My Work</button></a>
-              <button>Get In Touch</button>
+            <div class="hero-btn-container">
+              <a href=""
+                ><button class="cta-btn hero-btn btn">View My Work</button></a
+              >
+              <button class="hero-btn btn hero-btn-2">Get In Touch</button>
             </div>
             <div class="stats">
               <div class="stat">
@@ -352,14 +410,13 @@
             </div>
           </div>
         </div>
-        <hr />
       </section>
-
+      <hr />
       <section id="skills">
         <div class="container">
-          <div class="skill-content">
-            <p>WHAT I KNOW</p>
-            <h2>Skills & Tools</h2>
+          <div class="skill-content py-3">
+            <p class="styled-intro">WHAT I KNOW</p>
+            <h2 class="section-heading">Skills & Tools</h2>
             <p>
               Building my stack from the ground up. Frontend first, backend
               next, with the goal of security expert in sight
@@ -454,9 +511,9 @@
 
       <section id="projects">
         <div class="container">
-          <div class="project-content">
-            <p>WHAT I'VE BUILT</p>
-            <h2>Projects</h2>
+          <div class="project-content py-3">
+            <p class="styled-intro">WHAT I'VE BUILT</p>
+            <h2 class="section-heading">Projects</h2>
             <p>
               Early days, real code. Every project here was built from scratch
             </p>
@@ -535,21 +592,22 @@
           </div>
         </div>
       </section>
+      <hr />
 
       <section id="about">
         <div class="container">
-          <div class="project-content">
-            <p>WHO I AM</p>
-            <h2>About Me</h2>
+          <div class="project-content py-3">
+            <p class="styled-intro">WHO I AM</p>
+            <h2 class="section-heading">About Me</h2>
             <div class="row g-4">
               <div class="col-md-7 col-sm-12">
-                <div class="card about-info-card p-4 h-100">
+                <div class="card about-info-card p-5 h-100">
                   <p>
-                    I'm <span>David Oyaniran</span>, a 200 level Computer
-                    Science student at Lagos State University (LASU) with a
-                    clear mission — graduate with a
-                    <span>portfolio and experience</span>, not just a
-                    certificate.
+                    I'm <span class="styled-name">David Oyaniran</span>, a 200
+                    level Computer Science student at Lagos State University
+                    (LASU) with a clear mission — graduate with a
+                    <span class="styled-name">portfolio and experience</span>,
+                    not just a certificate.
                   </p>
                   <p>
                     My path is intentional: Full Stack Web Development →
@@ -563,7 +621,7 @@
                     development. The kind of person that makes employers stop
                     scrolling. 🎯
                   </p>
-                  <h6>INTERESTS</h6>
+                  <h6 class="mb-3">INTERESTS</h6>
 
                   <div class="about-badge-container p-0">
                     <div class="badge progress-tag mb-0">
@@ -613,7 +671,9 @@
                     <div>
                       <h6 class="mb-0">Lagos State University</h6>
                       <p class="mb-0">B.Sc Computer Science . 200 Level</p>
-                      <p class="m-0 text-styled">Targeting First class</p>
+                      <p class="m-0 text-styled-purple">
+                        Targeting First class
+                      </p>
                     </div>
                   </div>
                   <div class="d-flex align-items-center gap-3 mb-3">
@@ -637,7 +697,9 @@
                     <div>
                       <h6 class="mb-0">Web Development Bootcamp</h6>
                       <p class="mb-0">Angela Yu · Udemy · In Progress</p>
-                      <p class="m-0 text-styled">HTML → CSS → JS → Backend</p>
+                      <p class="m-0 text-styled-blue">
+                        HTML → CSS → JS → Backend
+                      </p>
                     </div>
                   </div>
                   <div class="d-flex align-items-center gap-3 mb-3">
@@ -662,7 +724,7 @@
                     <div>
                       <h6 class="mb-0">Smart Contract Auditing</h6>
                       <p class="mb-0">The North Star · Coming Soon</p>
-                      <p class="m-0 text-styled">
+                      <p class="m-0 text-styled-red">
                         Web3 Security · Solidity · DeFi
                       </p>
                     </div>
@@ -676,28 +738,30 @@
       <hr />
       <section id="contact">
         <div class="container">
-          <div class="contact-content">
-            <div class="contact-card p-3">
-              <p>LET'S CONNECT</p>
-              <h2>Got an opportunity?</h2>
-              <h2>Let's talk</h2>
-              <p>
-                Whether it's a project, internship, collaboration, or just a
-                conversation about Web3 — my inbox is open.
-              </p>
+          <div class="contact-content py-5">
+            <div class="contact-card p-4">
+              <p class="styled-intro">LET'S CONNECT</p>
+              <h2 class="section-heading mb-0">Got an opportunity?</h2>
+              <h2 class="section-heading mt-0">Let's talk</h2>
+              <div class="about-description mb-2">
+                <p m-0>
+                  Whether it's a project, internship, collaboration, or just a
+                  conversation about Web3 — my inbox is open.
+                </p>
+              </div>
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=ooyanirandavid@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="Gmail-tag"
+                class="Gmail-tag styled-name mb-3"
               >
                 ooyanirandavid@gmail.com
               </a>
-              <button class="cta-btn btn">Send Me a Message</button>
-              <div class="contact-btn-container btn hero-btn">
-                <button>GitHub</button>
-                <button>Linkedin</button>
-                <button>Twitter / X</button>
+              <button class="cta-btn btn mb-3 px-3">Send Me a Message</button>
+              <div class="contact-btn-container mb-3">
+                <button class="btn contact-btn">GitHub</button>
+                <button class="btn contact-btn">Linkedin</button>
+                <button class="btn contact-btn">Twitter / X</button>
               </div>
             </div>
           </div>
@@ -707,7 +771,7 @@
     <footer
       class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top"
     >
-      <p class="col-md-4 mb-0">Designed & built by David Oyaniran · 2025</p>
+      <p class="col-md-4 mb-0">Designed & built by David Oyaniran · 2026</p>
     </footer>
   </body>
 </html>
