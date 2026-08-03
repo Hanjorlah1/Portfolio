@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>David's Crib</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./stylesheet.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #0d0d0d;
+        overflow-x: hidden;
+      }
+      hr {
+        color: white;
+      }
+      .logo > img {
+        border-radius: 10px;
+        height: clamp(36px, 8vw, 50px);
+        width: clamp(36px, 8vw, 50px);
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: clamp(8px, 2vw, 10px);
+        align-items: center;
+        padding: 0;
+        margin: 0;
+      }
+      nav {
+        margin-top: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: clamp(12px, 3vw, 20px) clamp(16px, 5vw, 40px);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        background: rgba(13, 13, 13, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid #1f1f1f;
+      }
+      .nav-links a {
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      #hero {
+        color: white;
+        padding: clamp(10px, 3vw, 20px);
+        margin-top: 90px;
+        max-width: 100%;
+        overflow: hidden;
+      }
+      .gradient-1 {
+        position: absolute;
+        width: clamp(250px, 45vw, 600px);
+        height: clamp(250px, 45vw, 600px);
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.2),
+          transparent 70%
+        );
+        top: -100px;
+        right: -100px;
+        pointer-events: none;
+      }
+      .gradient-2 {
+        position: absolute;
+        width: clamp(180px, 30vw, 400px);
+        height: clamp(180px, 30vw, 400px);
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(236, 72, 153, 0.15),
+          transparent 70%
+        );
+        bottom: -50px;
+        left: -50px;
+        pointer-events: none;
+      }
+      .badge {
+        display: inline-flex;
+        height: auto;
+        min-height: 25px;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(78, 28, 129);
+        color: #a78bfa;
+        border-radius: 20px;
+        padding: 5px 14px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(124, 58, 237, 0.4);
+        letter-spacing: 0.05em;
+        max-width: 100%;
+      }
+      .badge > p {
+        margin: 0;
+        padding: 0;
+        font-size: clamp(13px, 3vw, 15px);
+      }
+      .hero-title {
+        font-weight: bold;
+        font-size: clamp(30px, 8vw, 50px);
+        margin-bottom: 10px;
+        line-height: 1.15;
+      }
+      .hero-title > span {
+        background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .subhead {
+        font-size: clamp(14px, 3.5vw, 17px);
+        margin-bottom: 25px;
+      }
+      .subhead > span {
+        color: aqua;
+      }
+      .hero-content > .hero-text {
+        margin-bottom: 40px;
+        width: 100%;
+        max-width: 600px;
+        font-size: clamp(14px, 3vw, 16px);
+      }
+      .hero-btn {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 60px;
+      }
+      .hero-btn > button {
+        height: 50px;
+        width: 130px;
+        border-radius: 33px;
+        flex-shrink: 0;
+      }
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: clamp(20px, 5vw, 35px);
+      }
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .main-number {
+        font-weight: 900;
+        font-size: clamp(20px, 5vw, 30px);
+        margin-bottom: 0;
+      }
+      .stat-label {
+        font-size: clamp(12px, 3vw, 15px);
+      }
+      .cta-btn {
+        height: 50px;
+        width: 130px;
+        border-radius: 33px;
+        background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+        border: 1px solid;
+        flex-shrink: 1;
+      }
+
+      /* Structural changes that genuinely need a breakpoint check —
+         no flexbox/grid trick replaces "hide this below X px" */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+      }
+      #skills {
+        color: azure;
+      }
+      .progress-tag {
+        font-size: 5px;
+        font-weight: 200;
+        letter-spacing: 0em;
+      }
+      .skill-card {
+        border-radius: 20px;
+        background-color: #161616;
+        border: 1px solid;
+      }
+      /* From Uiverse.io by Yaya12085 */
+      .project-card {
+        border-radius: 0.5rem;
+        background-color: #fff;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        border: 1px solid transparent;
+      }
+
+      .project-card a {
+        text-decoration: none;
+      }
+
+      .project-card-content {
+        padding: 1.1rem;
+      }
+
+      .project-card-image {
+        object-fit: cover;
+        width: 100%;
+        height: 150px;
+        background-color: rgb(239, 205, 255);
+      }
+
+      .project-card-title {
+        color: #111827;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        font-weight: 600;
+      }
+
+      .project-card-desc {
+        margin-top: 0.5rem;
+        color: #6b7280;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+      }
+
+      .project-card-action {
+        display: inline-flex;
+        margin-top: 1rem;
+        color: #ffffff;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        font-weight: 500;
+        align-items: center;
+        gap: 0.25rem;
+        background-color: #2563eb;
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+
+      .project-card-action span {
+        transition: 0.3s ease;
+      }
+
+      .project-card-action:hover span {
+        transform: translateX(4px);
+      }
+      .about-badge-container {
+        font-size: 5px;
+        display: flex;
+        gap: 5px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+      .feature-icon {
+        height: 40px;
+        width: 40px;
+        border-radius: 10px;
+        color: #8b5cf6;
+      }
+      footer > p {
+        color: white;
+      }
+      .contact-card {
+        background: linear-gradient(
+          90deg,
+          rgba(139, 92, 246, 0.5),
+          rgba(59, 131, 246, 0.5)
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 25px;
+      }
+      .contact-card > p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <a href="#" class="logo"
+            ><img
+              src="./assets/ChatGPT Image Jul 29, 2026, 10_43_46 AM.png"
+              alt="David Oyaniran logo"
+          /></a>
+          <ul class="nav-links">
+            <li><a href="#">skill</a></li>
+            <li><a href="#">projects</a></li>
+            <li><a href="#">about</a></li>
+            <li><a href="#">contact</a></li>
+          </ul>
+          <button class="cta-btn btn">Hire Me</button>
+        </nav>
+      </header>
+    </div>
+    <hr />
+    <main>
+      <section id="hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="gradient-1"></div>
+            <div class="gradient-2"></div>
+            <div class="badge">
+              <p>👋 Available for opportunities</p>
+            </div>
+            <h1 class="hero-title">
+              David <br />
+              <span class="Oyaniran"> Oyaniran</span>
+            </h1>
+
+            <p class="subhead">
+              Web Developer &
+              <span class="subhead-part">Blockchain Enthusiast</span>
+            </p>
+
+            <p class="hero-text">
+              CS student at LASU building at the intersection of web development
+              and blockchain technology. On a mission to become a smart contract
+              auditor - One line of code at a time.
+            </p>
+
+            <div class="hero-btn btn">
+              <a href=""><button class="cta-btn">View My Work</button></a>
+              <button>Get In Touch</button>
+            </div>
+            <div class="stats">
+              <div class="stat">
+                <p class="main-number">200LV</p>
+                <p class="stat-label">LASU CS Student</p>
+              </div>
+              <div class="stat">
+                <p class="main-number">3+</p>
+                <p class="stat-label">Project Built</p>
+              </div>
+              <div class="stat">
+                <p class="main-number">Security Eng</p>
+                <p class="stat-label">End Goal</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="skill-content">
+            <p>WHAT I KNOW</p>
+            <h2>Skills & Tools</h2>
+            <p>
+              Building my stack from the ground up. Frontend first, backend
+              next, with the goal of security expert in sight
+            </p>
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
+                <div class="card skill-card h100">
+                  <div class="card-body">
+                    <p card-logo>🌐</p>
+                    <h5 class="card-title">Frontend</h5>
+                    <p class="card-text">
+                      Building clean, responsive interfaces from scratch with
+                      modern HTML & CSS.
+                    </p>
+                    <div class="badge progress-tag">
+                      <p>HTML5</p>
+                    </div>
+                    <div class="badge progress-tag">
+                      <p>CSS3</p>
+                    </div>
+                    <div class="badge progress-tag">
+                      <p>Flexbox</p>
+                    </div>
+                    <div class="badge progress-tag">
+                      <p>Bootstrap</p>
+                    </div>
+                    <div class="badge progress-tag">
+                      <p>JavaScript</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
+                <div class="card skill-card h-100">
+                  <div class="card-body">
+                    <p card-logo>🗄️</p>
+                    <h5 class="card-title">Backend</h5>
+                    <p class="card-text">
+                      Running server-side logic using tools like Node.js,
+                      Python, or Go.
+                    </p>
+                    <div class="badge progress-tag">
+                      <p>Coming Soon</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
+                <div class="card skill-card h-100">
+                  <div class="card-body">
+                    <p card-logo>🔒</p>
+                    <h5 class="card-title">Web3/Blockchain</h5>
+                    <p class="card-text">
+                      Learning the Web3 stack with smart contract auditing as
+                      the north star
+                    </p>
+                    <div class="badge progress-tag">
+                      <p>Web3</p>
+                    </div>
+                    <div class="badge progress-tag">
+                      <p>Coming Soon</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
+                <div class="card skill-card h-100">
+                  <div class="card-body">
+                    <p card-logo>⚒️</p>
+                    <h5 class="card-title">Tools</h5>
+                    <p class="card-text">
+                      The everyday tools that keep projects organized and code
+                      version-controlled.
+                    </p>
+                    <div class="badge progress-tag">
+                      <p>Git</p>
+                    </div>
+                    <div class="badge progress-tag">
+                      <p>GitHub</p>
+                    </div>
+                    <div class="badge progress-tag">
+                      <p>VS Code</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr />
+
+      <section id="projects">
+        <div class="container">
+          <div class="project-content">
+            <p>WHAT I'VE BUILT</p>
+            <h2>Projects</h2>
+            <p>
+              Early days, real code. Every project here was built from scratch
+            </p>
+            <!-- From Uiverse.io by Yaya12085 -->
+            <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card project-card">
+                  <div class="project-card-image"></div>
+                  <div class="project-card-content">
+                    <a href="#">
+                      <span class="project-card-title">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </span>
+                    </a>
+
+                    <p class="project-card-desc">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Recusandae dolores, possimus pariatur animi temporibus
+                      nesciunt praesentium
+                    </p>
+
+                    <a class="project-card-action" href="#">
+                      Find out more
+                      <span aria-hidden="true"> → </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card project-card">
+                  <div class="project-card-image"></div>
+                  <div class="project-card-content">
+                    <a href="#">
+                      <span class="project-card-title">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </span>
+                    </a>
+
+                    <p class="project-card-desc">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Recusandae dolores, possimus pariatur animi temporibus
+                      nesciunt praesentium
+                    </p>
+
+                    <a class="project-card-action" href="#">
+                      Find out more
+                      <span aria-hidden="true"> → </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card project-card">
+                  <div class="project-card-image"></div>
+                  <div class="project-card-content">
+                    <a href="#">
+                      <span class="project-card-title">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </span>
+                    </a>
+
+                    <p class="project-card-desc">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      Recusandae dolores, possimus pariatur animi temporibus
+                      nesciunt praesentium
+                    </p>
+
+                    <a class="project-card-action" href="#">
+                      Find out more
+                      <span aria-hidden="true"> → </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="project-content">
+            <p>WHO I AM</p>
+            <h2>About Me</h2>
+            <div class="row g-4">
+              <div class="col-md-7 col-sm-12">
+                <div class="card about-info-card p-4 h-100">
+                  <p>
+                    I'm <span>David Oyaniran</span>, a 200 level Computer
+                    Science student at Lagos State University (LASU) with a
+                    clear mission — graduate with a
+                    <span>portfolio and experience</span>, not just a
+                    certificate.
+                  </p>
+                  <p>
+                    My path is intentional: Full Stack Web Development →
+                    Cybersecurity → Smart Contract Auditing. I'm not jumping
+                    around — I'm building a T-shaped skill set where every layer
+                    supports the next.
+                  </p>
+                  <p>
+                    Long-term goal? Become one of the few Nigerian developers
+                    operating at the intersection of blockchain security and web
+                    development. The kind of person that makes employers stop
+                    scrolling. 🎯
+                  </p>
+                  <h6>INTERESTS</h6>
+
+                  <div class="about-badge-container p-0">
+                    <div class="badge progress-tag mb-0">
+                      <p>⚽ Soccer</p>
+                    </div>
+                    <div class="badge progress-tag mb-0">
+                      <p>🎮 Gaming</p>
+                    </div>
+                    <div class="badge progress-tag mb-0">
+                      <p>📈 Forex</p>
+                    </div>
+                    <div class="badge progress-tag mb-0">
+                      <p>🎵 Music</p>
+                    </div>
+                    <div class="badge progress-tag mb-0">
+                      <p>🔐 Web3</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-5 col-sm-12">
+                <div class="card about-info-card p-4 h-100">
+                  <h5>EDUCATION & JOURNEY</h5>
+
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div
+                      class="feature-icon d-flex align-items-center justify-content-center text-bg-primary bg-gradient flex-shrink-0"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        fill="currentColor"
+                        class="bi bi-mortarboard-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z"
+                        />
+                        <path
+                          d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z"
+                        />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <h6 class="mb-0">Lagos State University</h6>
+                      <p class="mb-0">B.Sc Computer Science . 200 Level</p>
+                      <p class="m-0 text-styled">Targeting First class</p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div
+                      class="feature-icon d-flex align-items-center justify-content-center text-bg-primary bg-gradient flex-shrink-0"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-laptop-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M2.5 2A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5"
+                        />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <h6 class="mb-0">Web Development Bootcamp</h6>
+                      <p class="mb-0">Angela Yu · Udemy · In Progress</p>
+                      <p class="m-0 text-styled">HTML → CSS → JS → Backend</p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-3 mb-3">
+                    <div
+                      class="feature-icon d-flex align-items-center justify-content-center text-bg-primary bg-gradient flex-shrink-0"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-lock-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4m0 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
+                        />
+                      </svg>
+                    </div>
+
+                    <div>
+                      <h6 class="mb-0">Smart Contract Auditing</h6>
+                      <p class="mb-0">The North Star · Coming Soon</p>
+                      <p class="m-0 text-styled">
+                        Web3 Security · Solidity · DeFi
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr />
+      <section id="contact">
+        <div class="container">
+          <div class="contact-content">
+            <div class="contact-card p-3">
+              <p>LET'S CONNECT</p>
+              <h2>Got an opportunity?</h2>
+              <h2>Let's talk</h2>
+              <p>
+                Whether it's a project, internship, collaboration, or just a
+                conversation about Web3 — my inbox is open.
+              </p>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=ooyanirandavid@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="Gmail-tag"
+              >
+                ooyanirandavid@gmail.com
+              </a>
+              <button class="cta-btn btn">Send Me a Message</button>
+              <div class="contact-btn-container btn hero-btn">
+                <button>GitHub</button>
+                <button>Linkedin</button>
+                <button>Twitter / X</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top"
+    >
+      <p class="col-md-4 mb-0">Designed & built by David Oyaniran · 2025</p>
+    </footer>
+  </body>
+</html>
