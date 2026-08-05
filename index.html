@@ -186,16 +186,14 @@
         padding: 12px 20px;
       }
       .contact-btn {
-        width: 100px;
+        width: clamp(85px, 9vw, 100px);
       }
       .contact-btn-container {
         display: flex;
-        gap: 20px;
+        gap: clamp(15px, 3.5vw, 20px);
       }
 
-      /* Structural changes that genuinely need a breakpoint check —
-         no flexbox/grid trick replaces "hide this below X px" */
-      @media (max-width: 768px) {
+      @media (max-width: 479px) {
         .nav-links {
           display: none;
         }
@@ -219,6 +217,7 @@
         background-color: #fff;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         border: 1px solid transparent;
+        overflow: hidden;
       }
 
       .project-card a {
@@ -231,11 +230,32 @@
 
       .project-card-image {
         object-fit: cover;
+        overflow-x: hidden;
         width: 100%;
         height: 150px;
         background-color: rgb(239, 205, 255);
       }
-
+      .project-card-image-1 {
+        background-image: linear-gradient(
+          135deg,
+          rgb(26, 26, 62),
+          rgb(45, 27, 105)
+        );
+      }
+      .project-card-image-2 {
+        background-image: linear-gradient(
+          135deg,
+          rgb(26, 46, 26),
+          rgb(27, 77, 45)
+        );
+      }
+      .project-card-image-3 {
+        background-image: linear-gradient(
+          135deg,
+          rgb(46, 26, 46),
+          rgb(77, 27, 77)
+        );
+      }
       .project-card-title {
         color: #111827;
         font-size: 1.125rem;
@@ -304,7 +324,7 @@
         text-align: center;
       }
       .Gmail-tag {
-        font-size: 30px;
+        font-size: clamp(20px, 5vw, 30px);
         font-weight: 600;
       }
       .styled-intro {
@@ -327,6 +347,11 @@
         color: #ffffff;
         margin-top: 0;
       }
+      .contact-section-heading {
+        text-wrap: nowrap;
+        overflow: hidden;
+        font-size: clamp(25px, 5vw, 52px);
+      }
       .about-info-card {
         background-color: #161616;
         border-radius: 25px;
@@ -342,6 +367,31 @@
       }
       .text-styled-red {
         color: #ec4899;
+      }
+      .project-card {
+        border-radius: 20px;
+        background-color: #161616;
+        border: 1px solid;
+        border: 1px solid #88888832;
+      }
+      .project-card-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+      }
+      h5 {
+        color: white;
+      }
+      .section-description {
+        color: #888888;
+        font-size: 16px;
+      }
+      .card-logo {
+        font-size: 30px;
+      }
+      .card-title {
+        color: white;
       }
     </style>
   </head>
@@ -365,7 +415,7 @@
     <hr />
     <main>
       <section id="hero">
-        <div class="container">
+        <div class="container-fluid px-4">
           <div class="hero-content">
             <div class="gradient-1"></div>
             <div class="gradient-2"></div>
@@ -413,21 +463,21 @@
       </section>
       <hr />
       <section id="skills">
-        <div class="container">
+        <div class="container-fluid px-4">
           <div class="skill-content py-3">
             <p class="styled-intro">WHAT I KNOW</p>
             <h2 class="section-heading">Skills & Tools</h2>
-            <p>
+            <p class="section-description">
               Building my stack from the ground up. Frontend first, backend
               next, with the goal of security expert in sight
             </p>
             <div class="row">
               <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
-                <div class="card skill-card h100">
+                <div class="card skill-card h100 p-2">
                   <div class="card-body">
-                    <p card-logo>🌐</p>
+                    <p class="card-logo">🌐</p>
                     <h5 class="card-title">Frontend</h5>
-                    <p class="card-text">
+                    <p class="project-card-desc">
                       Building clean, responsive interfaces from scratch with
                       modern HTML & CSS.
                     </p>
@@ -450,11 +500,11 @@
                 </div>
               </div>
               <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
-                <div class="card skill-card h-100">
+                <div class="card skill-card h-100 p-2">
                   <div class="card-body">
-                    <p card-logo>🗄️</p>
+                    <p class="card-logo">🗄️</p>
                     <h5 class="card-title">Backend</h5>
-                    <p class="card-text">
+                    <p class="project-card-desc">
                       Running server-side logic using tools like Node.js,
                       Python, or Go.
                     </p>
@@ -465,11 +515,11 @@
                 </div>
               </div>
               <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
-                <div class="card skill-card h-100">
+                <div class="card skill-card h-100 p-2">
                   <div class="card-body">
-                    <p card-logo>🔒</p>
+                    <p class="card-logo">🔒</p>
                     <h5 class="card-title">Web3/Blockchain</h5>
-                    <p class="card-text">
+                    <p class="project-card-desc">
                       Learning the Web3 stack with smart contract auditing as
                       the north star
                     </p>
@@ -483,11 +533,11 @@
                 </div>
               </div>
               <div class="col-sm-12 col-md-6 col-lg-3 mb-4">
-                <div class="card skill-card h-100">
+                <div class="card skill-card h-100 p-2">
                   <div class="card-body">
-                    <p card-logo>⚒️</p>
+                    <p class="card-logo">⚒️</p>
                     <h5 class="card-title">Tools</h5>
-                    <p class="card-text">
+                    <p class="project-card-desc">
                       The everyday tools that keep projects organized and code
                       version-controlled.
                     </p>
@@ -510,79 +560,70 @@
       <hr />
 
       <section id="projects">
-        <div class="container">
+        <div class="container-fluid px-4">
           <div class="project-content py-3">
             <p class="styled-intro">WHAT I'VE BUILT</p>
             <h2 class="section-heading">Projects</h2>
-            <p>
+            <p class="section-description">
               Early days, real code. Every project here was built from scratch
             </p>
             <!-- From Uiverse.io by Yaya12085 -->
             <div class="row">
               <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card project-card">
-                  <div class="project-card-image"></div>
+                <div class="card project-card h-100">
+                  <div class="project-card-image project-card-image-1">
+                    <p>🏳️</p>
+                  </div>
                   <div class="project-card-content">
-                    <a href="#">
-                      <span class="project-card-title">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </span>
-                    </a>
-
+                    <p class="text-styled-red">HTML & CSS</p>
+                    <h5>Flag Collection</h5>
                     <p class="project-card-desc">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Recusandae dolores, possimus pariatur animi temporibus
-                      nesciunt praesentium
+                      Pure CSS flags built using shapes, positioning, and layout
+                      techniques. Started with Laos — yes, Laos. 😂
                     </p>
 
                     <a class="project-card-action" href="#">
-                      Find out more
+                      View on Github
                       <span aria-hidden="true"> → </span>
                     </a>
                   </div>
                 </div>
               </div>
               <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card project-card">
-                  <div class="project-card-image"></div>
+                <div class="card project-card h-100">
+                  <div class="project-card-image project-card-image-2">
+                    <p>👤</p>
+                  </div>
                   <div class="project-card-content">
-                    <a href="#">
-                      <span class="project-card-title">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </span>
-                    </a>
-
+                    <p class="text-styled-red">Flexbox</p>
+                    <h5>Profile Card UI</h5>
                     <p class="project-card-desc">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Recusandae dolores, possimus pariatur animi temporibus
-                      nesciunt praesentium
+                      A clean profile card component featuring avatar, stats,
+                      and action buttons — built with pure Flexbox.
                     </p>
 
                     <a class="project-card-action" href="#">
-                      Find out more
+                      View on Github
                       <span aria-hidden="true"> → </span>
                     </a>
                   </div>
                 </div>
               </div>
               <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
-                <div class="card project-card">
-                  <div class="project-card-image"></div>
+                <div class="card project-card h-100">
+                  <div class="project-card-image project-card-image-3">
+                    <p>💰</p>
+                  </div>
                   <div class="project-card-content">
-                    <a href="#">
-                      <span class="project-card-title">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </span>
-                    </a>
-
+                    <p class="text-styled-red">Flexbox and design</p>
+                    <h5>Pricing Page</h5>
                     <p class="project-card-desc">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Recusandae dolores, possimus pariatur animi temporibus
-                      nesciunt praesentium
+                      Three-tier pricing component with featured card, badge,
+                      and responsive layout. Dark themed, production-ready look.
                     </p>
 
                     <a class="project-card-action" href="#">
-                      Find out more
+                      View on Github
                       <span aria-hidden="true"> → </span>
                     </a>
                   </div>
@@ -595,7 +636,7 @@
       <hr />
 
       <section id="about">
-        <div class="container">
+        <div class="container-fluid px-4">
           <div class="project-content py-3">
             <p class="styled-intro">WHO I AM</p>
             <h2 class="section-heading">About Me</h2>
@@ -736,13 +777,18 @@
         </div>
       </section>
       <hr />
+
       <section id="contact">
-        <div class="container">
+        <div class="container-fluid px-4">
           <div class="contact-content py-5">
             <div class="contact-card p-4">
               <p class="styled-intro">LET'S CONNECT</p>
-              <h2 class="section-heading mb-0">Got an opportunity?</h2>
-              <h2 class="section-heading mt-0">Let's talk</h2>
+              <h2 class="section-heading mb-0 contact-section-heading">
+                Got an opportunity?
+              </h2>
+              <h2 class="section-heading mt-0 contact-section-heading">
+                Let's talk
+              </h2>
               <div class="about-description mb-2">
                 <p m-0>
                   Whether it's a project, internship, collaboration, or just a
