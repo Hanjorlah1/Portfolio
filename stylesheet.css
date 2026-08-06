@@ -203,6 +203,7 @@ nav {
 .nav-links a {
   text-decoration: none;
   white-space: nowrap;
+  color: #888888;
 }
 
 /* ========================================
@@ -300,11 +301,11 @@ nav {
 .skill-card {
   border-radius: 20px;
   background-color: #161616;
-  border: 1px solid;
+  border: 1px solid #88888832;
 }
 
 .progress-tag {
-  font-size: 5px;
+  font-size: 10px;
   font-weight: 200;
   letter-spacing: 0em;
 }
@@ -402,7 +403,7 @@ nav {
 ======================================== */
 
 .about-badge-container {
-  font-size: 5px;
+  font-size: 10px;
   display: flex;
   gap: 5px;
   justify-content: flex-start;
