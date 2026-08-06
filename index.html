@@ -11,6 +11,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="./stylesheet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       * {
         box-sizing: border-box;
@@ -18,6 +24,7 @@
       body {
         background-color: #0d0d0d;
         overflow-x: hidden;
+        font-family: "Space Grotesk", sans-serif;
       }
       hr {
         color: white;
@@ -44,6 +51,7 @@
         right: 0;
         z-index: 100;
         padding: clamp(12px, 3vw, 20px) clamp(16px, 5vw, 40px);
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -58,6 +66,8 @@
         white-space: nowrap;
       }
       #hero {
+        position: relative;
+        overflow: hidden;
         color: white;
         padding: clamp(10px, 3vw, 20px);
         margin-top: 90px;
@@ -88,7 +98,7 @@
           rgba(236, 72, 153, 0.15),
           transparent 70%
         );
-        bottom: -50px;
+        bottom: -10px;
         left: -50px;
         pointer-events: none;
       }
@@ -113,10 +123,11 @@
         font-size: clamp(13px, 3vw, 15px);
       }
       .hero-title {
-        font-weight: bold;
-        font-size: clamp(30px, 8vw, 50px);
+        font-weight: 800;
+        font-size: clamp(48px, 8vw, 96px);
         margin-bottom: 10px;
         line-height: 1.15;
+        font-family: "Syne", sans-serif;
       }
       .styled-name {
         background: linear-gradient(90deg, #8b5cf6, #3b82f6);
@@ -146,21 +157,25 @@
       .stats {
         display: flex;
         flex-wrap: wrap;
-        gap: clamp(20px, 5vw, 35px);
+        gap: clamp(20px, 3.5vw, 30px);
       }
       .stat {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
+        font-family: "Syne", sans-serif;
       }
       .main-number {
-        font-weight: 900;
-        font-size: clamp(20px, 5vw, 30px);
+        font-weight: 800;
+        font-size: clamp(15px, 3.5vw, 25px);
         margin-bottom: 0;
       }
       .stat-label {
         font-size: clamp(12px, 3vw, 15px);
+        font-weight: 300;
+        color: #888888;
+        font-family: "Space Grotesk", sans-serif;
       }
       .btn {
         height: 50px;
@@ -186,14 +201,14 @@
         padding: 12px 20px;
       }
       .contact-btn {
-        width: clamp(85px, 9vw, 100px);
+        width: clamp(85px, 12vw, 100px);
       }
       .contact-btn-container {
         display: flex;
         gap: clamp(15px, 3.5vw, 20px);
       }
 
-      @media (max-width: 479px) {
+      @media (max-width: 767px) {
         .nav-links {
           display: none;
         }
@@ -324,8 +339,9 @@
         text-align: center;
       }
       .Gmail-tag {
-        font-size: clamp(20px, 5vw, 30px);
+        font-size: clamp(20px, 5vw, 35px);
         font-weight: 600;
+        font-family: "Syne", sans-serif;
       }
       .styled-intro {
         color: #0d6efd;
@@ -346,6 +362,7 @@
         font-weight: 800;
         color: #ffffff;
         margin-top: 0;
+        font-family: "Syne", sans-serif;
       }
       .contact-section-heading {
         text-wrap: nowrap;
@@ -392,6 +409,27 @@
       }
       .card-title {
         color: white;
+        font-family: "Syne", sans-serif;
+      }
+      .btn {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          opacity 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+
+      .cta-btn:hover {
+        filter: brightness(1.1);
       }
     </style>
   </head>
@@ -403,10 +441,10 @@
             ><img src="./assets/logo.png" alt="David Oyaniran logo"
           /></a>
           <ul class="nav-links">
-            <li><a href="#">skill</a></li>
-            <li><a href="#">projects</a></li>
-            <li><a href="#">about</a></li>
-            <li><a href="#">contact</a></li>
+            <li><a href="#skills">skill</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#contact">contact</a></li>
           </ul>
           <button class="cta-btn btn">Hire Me</button>
         </nav>
@@ -439,10 +477,14 @@
             </p>
 
             <div class="hero-btn-container">
-              <a href=""
+              <a href="#projects"
                 ><button class="cta-btn hero-btn btn">View My Work</button></a
               >
-              <button class="hero-btn btn hero-btn-2">Get In Touch</button>
+              <a href="#contact"
+                ><button class="hero-btn btn hero-btn-2">
+                  Get In Touch
+                </button></a
+              >
             </div>
             <div class="stats">
               <div class="stat">
@@ -576,7 +618,7 @@
                   </div>
                   <div class="project-card-content">
                     <p class="text-styled-red">HTML & CSS</p>
-                    <h5>Flag Collection</h5>
+                    <h5 class="card-title">Flag Collection</h5>
                     <p class="project-card-desc">
                       Pure CSS flags built using shapes, positioning, and layout
                       techniques. Started with Laos — yes, Laos. 😂
@@ -596,7 +638,7 @@
                   </div>
                   <div class="project-card-content">
                     <p class="text-styled-red">Flexbox</p>
-                    <h5>Profile Card UI</h5>
+                    <h5 class="card-title">Profile Card UI</h5>
                     <p class="project-card-desc">
                       A clean profile card component featuring avatar, stats,
                       and action buttons — built with pure Flexbox.
@@ -616,7 +658,7 @@
                   </div>
                   <div class="project-card-content">
                     <p class="text-styled-red">Flexbox and design</p>
-                    <h5>Pricing Page</h5>
+                    <h5 class="card-title">Pricing Page</h5>
                     <p class="project-card-desc">
                       Three-tier pricing component with featured card, badge,
                       and responsive layout. Dark themed, production-ready look.
