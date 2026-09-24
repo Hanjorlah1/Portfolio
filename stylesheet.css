@@ -457,6 +457,11 @@ nav {
   width: clamp(85px, 12vw, 100px);
 }
 
+.contact-btn > a {
+  text-decoration: none;
+  color: black;
+}
+
 .contact-btn-container {
   display: flex;
   gap: clamp(15px, 3.5vw, 20px);
